@@ -9,9 +9,15 @@ dropdb: check_env
 	dropdb ${DATABASE_NAME}
 	dropuser ${DATABASE_USER}
 
+lint:
+	poetry run --no-plugins -- ruff check
+
 migrate:
 	poetry run --no-plugins -- alembic upgrade head
 
 resetdb: dropdb createdb migrate
 
 setupdb: createdb migrate
+
+test:
+	poetry run --no-plugins -- pytest -vvv
