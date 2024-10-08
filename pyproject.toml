@@ -15,7 +15,7 @@ sqlmodel = "^0.0.22"
 
 [tool.poetry.group.dev.dependencies]
 alembic = "^1.13.3"
-pre-commit = "^4.0.0"
+pre-commit = "^4.0.1"
 ruff = "^0.6.9"
 
 
