@@ -10,7 +10,6 @@ packages = [{ include = "budgeapp", from = "src" }]
 python = "^3.12"
 asyncpg = "^0.29.0"
 sqlalchemy = { extras = ["asyncio"], version = "^2.0.35" }
-sqlmodel = "^0.0.22"
 
 
 [tool.poetry.group.dev.dependencies]
