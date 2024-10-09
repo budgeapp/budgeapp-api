@@ -16,6 +16,7 @@ sqlalchemy = { extras = ["asyncio"], version = "^2.0.35" }
 alembic = "^1.13.3"
 pre-commit = "^4.0.1"
 ruff = "^0.6.9"
+ipython = "^8.28.0"
 
 
 [tool.poetry.group.test.dependencies]
