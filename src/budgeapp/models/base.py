@@ -11,10 +11,12 @@ def now():
 
 
 class BaseModel(MappedAsDataclass, AsyncAttrs, DeclarativeBase):
-    id: Mapped[uuid.UUID] = mapped_column(default_factory=uuid.uuid4, primary_key=True)
+    id: Mapped[uuid.UUID] = mapped_column(
+        default_factory=uuid.uuid4, primary_key=True, kw_only=True
+    )
     created_at: Mapped[datetime] = mapped_column(
-        DateTime(timezone=True), default_factory=now
+        DateTime(timezone=True), default_factory=now, kw_only=True
     )
     updated_at: Mapped[datetime] = mapped_column(
-        DateTime(timezone=True), default_factory=now, onupdate=now
+        DateTime(timezone=True), default_factory=now, onupdate=now, kw_only=True
     )

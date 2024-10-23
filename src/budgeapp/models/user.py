@@ -6,4 +6,4 @@ from budgeapp.models.base import BaseModel
 class UserModel(BaseModel):
     __tablename__ = "users"
 
-    email: Mapped[str] = mapped_column(unique=True, kw_only=True)
+    email: Mapped[str] = mapped_column(unique=True)
