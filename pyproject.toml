@@ -1,0 +1,15 @@
+[project]
+name = "budgeapp"
+version = "0.1.0"
+description = "Backend API for Budge, a personal finance budgeting and forecasting app."
+readme = "README.md"
+authors = [{ name = "Jesse Brooklyn Hannah", email = "jesse@jbhannah.net" }]
+requires-python = ">=3.13"
+dependencies = []
+
+[project.scripts]
+budgeapp = "budgeapp:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
