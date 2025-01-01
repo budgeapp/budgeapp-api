@@ -5,7 +5,7 @@ description = "Backend API for Budge, a personal finance budgeting and forecasti
 readme = "README.md"
 authors = [{ name = "Jesse Brooklyn Hannah", email = "jesse@jbhannah.net" }]
 requires-python = ">=3.13"
-dependencies = []
+dependencies = ["alembic>=1.14.0", "sqlalchemy[postgresql-asyncpg]>=2.0.36"]
 
 [project.scripts]
 budgeapp = "budgeapp:main"
