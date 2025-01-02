@@ -4,6 +4,7 @@ from logging.config import fileConfig
 from sqlalchemy.engine import Connection
 
 import budgeapp.db.models
+import budgeapp.env
 from alembic import context
 
 # this is the Alembic Config object, which provides
@@ -39,7 +40,7 @@ def run_migrations_offline() -> None:
     script output.
 
     """
-    url = budgeapp.db.DATABASE_URL
+    url = budgeapp.env.DATABASE_URL
     context.configure(
         url=url,
         target_metadata=target_metadata,

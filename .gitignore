@@ -12,3 +12,7 @@ wheels/
 # Coverage
 .coverage
 coverage/
+
+.env
+.env.*
+!.env.example
