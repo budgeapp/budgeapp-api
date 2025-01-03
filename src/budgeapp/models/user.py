@@ -1,18 +1,8 @@
 import uuid
-from dataclasses import dataclass, field
 
-import sqlalchemy as sa
-
-from ._registry import registry
+from sqlmodel import Field, SQLModel
 
 
-@registry.mapped
-@dataclass
-class User:
-    __table__ = sa.Table(
-        "users",
-        registry.metadata,
-        sa.Column("id", sa.UUID, primary_key=True),
-    )
-
-    id: uuid.UUID = field(default_factory=uuid.uuid4, init=False)
+class User(SQLModel, table=True):
+    id: uuid.UUID = Field(default_factory=uuid.uuid4, primary_key=True)
+    email: str = Field(unique=True)
