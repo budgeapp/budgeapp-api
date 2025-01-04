@@ -3,7 +3,7 @@ from importlib import metadata
 import uvicorn
 from fastapi import FastAPI
 
-from .routers import health
+from .routers import health, user
 
 distribution = metadata.distribution("budgeapp")
 
@@ -14,6 +14,7 @@ app = FastAPI(
 )
 
 app.include_router(health.router)
+app.include_router(user.router)
 
 
 def main():  # pragma: no cover

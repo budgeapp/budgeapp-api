@@ -9,3 +9,5 @@ except ImportError:
     pass
 
 DATABASE_URL = environ["DATABASE_URL"]
+JWT_ALGORITHM = environ["JWT_ALGORITHM"]
+JWT_SECRET = environ["JWT_SECRET"]
