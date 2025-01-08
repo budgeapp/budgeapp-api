@@ -12,6 +12,23 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
+    env:
+      DATABASE_URL: postgresql+asyncpg://${{vars.POSTGRES_USER}}:${{secrets.POSTGRES_PASSWORD}}@localhost:5432/${{vars.POSTGRES_USER}}
+
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_USER: ${{vars.POSTGRES_USER}}
+          POSTGRES_PASSWORD: ${{secrets.POSTGRES_PASSWORD}}
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+
     steps:
       - uses: actions/checkout@v4
       - uses: astral-sh/setup-uv@v5
@@ -21,4 +38,5 @@ jobs:
         with:
           python-version-file: pyproject.toml
       - run: uv sync --all-extras --dev
+      - run: uv run alembic upgrade head
       - run: uv run pytest
