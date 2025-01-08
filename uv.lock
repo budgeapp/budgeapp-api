@@ -102,10 +102,12 @@ dependencies = [
 
 [package.dev-dependencies]
 dev = [
+    { name = "python-dotenv" },
+]
+test = [
     { name = "pytest" },
     { name = "pytest-cov" },
     { name = "pytest-xdist" },
-    { name = "python-dotenv" },
 ]
 
 [package.metadata]
@@ -120,11 +122,11 @@ requires-dist = [
 ]
 
 [package.metadata.requires-dev]
-dev = [
+dev = [{ name = "python-dotenv", specifier = ">=1.0.1" }]
+test = [
     { name = "pytest", specifier = ">=8.3.4" },
     { name = "pytest-cov", specifier = ">=6.0.0" },
     { name = "pytest-xdist", specifier = ">=3.6.1" },
-    { name = "python-dotenv", specifier = ">=1.0.1" },
 ]
 
 [[package]]
