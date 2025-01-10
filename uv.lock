@@ -112,21 +112,21 @@ test = [
 
 [package.metadata]
 requires-dist = [
-    { name = "alembic", specifier = ">=1.14.0" },
-    { name = "argon2-cffi", specifier = ">=23.1.0" },
-    { name = "email-validator", specifier = ">=2.2.0" },
-    { name = "fastapi", extras = ["standard"], specifier = ">=0.115.6" },
-    { name = "pyjwt", extras = ["crypto"], specifier = ">=2.10.1" },
-    { name = "sqlalchemy", extras = ["postgresql-asyncpg"], specifier = ">=2.0.36" },
-    { name = "sqlmodel", specifier = ">=0.0.22" },
+    { name = "alembic", specifier = "==1.14.0" },
+    { name = "argon2-cffi", specifier = "==23.1.0" },
+    { name = "email-validator", specifier = "==2.2.0" },
+    { name = "fastapi", extras = ["standard"], specifier = "==0.115.6" },
+    { name = "pyjwt", extras = ["crypto"], specifier = "==2.10.1" },
+    { name = "sqlalchemy", extras = ["postgresql-asyncpg"], specifier = "==2.0.36" },
+    { name = "sqlmodel", specifier = "==0.0.22" },
 ]
 
 [package.metadata.requires-dev]
-dev = [{ name = "python-dotenv", specifier = ">=1.0.1" }]
+dev = [{ name = "python-dotenv", specifier = "==1.0.1" }]
 test = [
-    { name = "pytest", specifier = ">=8.3.4" },
-    { name = "pytest-cov", specifier = ">=6.0.0" },
-    { name = "pytest-xdist", specifier = ">=3.6.1" },
+    { name = "pytest", specifier = "==8.3.4" },
+    { name = "pytest-cov", specifier = "==6.0.0" },
+    { name = "pytest-xdist", specifier = "==3.6.1" },
 ]
 
 [[package]]
