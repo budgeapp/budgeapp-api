@@ -25,6 +25,15 @@
         "mtxr.sqltools-driver-pg"
       ]
     }
+  },
+
+  "portsAttributes": {
+    "5432": {
+      "label": "PostgreSQL"
+    },
+    "8000": {
+      "label": "FastAPI"
+    }
   }
 
   // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
