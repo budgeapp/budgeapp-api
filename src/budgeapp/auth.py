@@ -7,8 +7,8 @@ from fastapi.security import OAuth2PasswordBearer
 from pydantic import ValidationError
 from sqlalchemy.exc import NoResultFound
 
-from .db import AsyncDbSession
-from .models import Token, User
+from budgeapp.db import AsyncDbSession
+from budgeapp.models import Token, User
 
 oauth2_password_scheme = OAuth2PasswordBearer("/auth/password")
 

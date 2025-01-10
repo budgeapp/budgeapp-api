@@ -3,7 +3,7 @@ import uuid
 from pydantic import EmailStr, SecretStr, computed_field, model_validator
 from sqlmodel import Field, SQLModel
 
-from .password import PasswordField, PasswordHash
+from budgeapp.models.password import PasswordField, PasswordHash
 
 
 class UserBase(SQLModel):

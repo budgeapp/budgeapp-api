@@ -3,7 +3,7 @@ from importlib import metadata
 import uvicorn
 from fastapi import FastAPI
 
-from .routers import health, user
+from budgeapp.routers import health, user
 
 distribution = metadata.distribution("budgeapp")
 

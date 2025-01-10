@@ -2,7 +2,7 @@ from fastapi import APIRouter
 from fastapi.responses import PlainTextResponse
 from sqlmodel import select
 
-from ..db import AsyncDbSession
+from budgeapp.db import AsyncDbSession
 
 router = APIRouter(prefix="/health", tags=["health"])
 

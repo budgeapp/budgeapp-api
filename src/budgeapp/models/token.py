@@ -5,7 +5,7 @@ from enum import StrEnum
 import jwt
 from pydantic import BaseModel, Field
 
-from .. import env
+from budgeapp import env
 
 
 def _expiry_time():

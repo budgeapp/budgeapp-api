@@ -1,4 +1,4 @@
-from .token import Token
-from .user import User
+from budgeapp.models.token import Token
+from budgeapp.models.user import User
 
 __all__ = ["Token", "User"]

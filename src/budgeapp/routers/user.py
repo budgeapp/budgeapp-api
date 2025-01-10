@@ -3,10 +3,10 @@ from http import HTTPStatus
 from fastapi import APIRouter, HTTPException
 from sqlalchemy.exc import IntegrityError
 
-from ..auth import CurrentUser
-from ..db import AsyncDbSession
-from ..models import User
-from ..models.user import UserCreate
+from budgeapp.auth import CurrentUser
+from budgeapp.db import AsyncDbSession
+from budgeapp.models import User
+from budgeapp.models.user import UserCreate
 
 router = APIRouter(prefix="/user", tags=["user"])
 
