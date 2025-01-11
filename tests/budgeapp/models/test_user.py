@@ -12,9 +12,10 @@ from budgeapp.models.user import User, UserCreate
 async def test_user_authenticate(faker, user_factory):
     password = faker.password()
 
-    async with async_session() as db:
-        async with user_factory(password) as user:
-            auth = OAuth2PasswordRequestForm(username=user.email, password=password)
+    async with user_factory(password) as user:
+        auth = OAuth2PasswordRequestForm(username=user.email, password=password)
+
+        async with async_session() as db:
             assert await User.authenticate(auth, db) == user
 
 

@@ -8,12 +8,12 @@ from budgeapp.env import DATABASE_URL
 
 engine = create_async_engine(DATABASE_URL, echo=True)
 _factory = async_sessionmaker(engine, expire_on_commit=False)
-_async_session = _factory()
 
 
-@asynccontextmanager
-async def async_session():  # pragma: no cover
-    yield _async_session
+async def _async_session():
+    yield _factory()
 
 
-AsyncSessionDep = Annotated[AsyncSession, Depends(lambda: _async_session)]
+async_session = asynccontextmanager(_async_session)
+
+AsyncSessionDep = Annotated[AsyncSession, Depends(_async_session)]

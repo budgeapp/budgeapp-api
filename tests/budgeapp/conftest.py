@@ -24,7 +24,6 @@ async def user_factory(faker):
 
             yield user
 
-        async with async_session() as db:
             await db.delete(user)
 
     return asynccontextmanager(_user_factory)
