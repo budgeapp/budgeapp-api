@@ -1,7 +1,9 @@
 import uuid
 
+from fastapi.security import OAuth2PasswordRequestForm
 from pydantic import EmailStr, SecretStr, computed_field, model_validator
-from sqlmodel import Field, SQLModel
+from sqlalchemy.ext.asyncio import AsyncSession
+from sqlmodel import Field, SQLModel, select
 
 from budgeapp.models.password import PasswordField, PasswordHash
 
@@ -13,6 +15,14 @@ class UserBase(SQLModel):
 class User(UserBase, table=True):
     id: uuid.UUID = Field(default_factory=uuid.uuid4, primary_key=True)
     password_hash: PasswordField
+
+    @classmethod
+    async def authenticate(cls, auth: OAuth2PasswordRequestForm, db: AsyncSession):
+        query = select(cls).where(cls.email == auth.username)
+        user = await db.scalar(query)
+
+        if user is not None and user.password_hash == auth.password:
+            return user
 
 
 class UserCreate(UserBase):

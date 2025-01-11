@@ -24,7 +24,14 @@ build-backend = "hatchling.build"
 
 [dependency-groups]
 dev = ["python-dotenv==1.0.1"]
-test = ["pytest==8.3.4", "pytest-cov==6.0.0", "pytest-xdist==3.6.1"]
+test = [
+    "faker>=33.3.1",
+    "pytest==8.3.4",
+    "pytest-asyncio>=0.25.2",
+    "pytest-cov==6.0.0",
+    "pytest-xdist==3.6.1",
+]
 
 [tool.pytest.ini_options]
 addopts = "-n 4"
+asyncio_mode = "auto"
