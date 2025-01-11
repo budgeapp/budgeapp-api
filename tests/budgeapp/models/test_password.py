@@ -20,10 +20,19 @@ def test_password_hash_from_hash(hasher):
     assert hasher.verify(_hash.get_secret_value(), "password")
 
 
-def test_password_hash_eq():
+def test_password_hash_eq_str():
     _hash = PasswordHash("password")
     assert _hash == "password"
     assert _hash != "not password"
+
+
+def test_password_hash_eq_password_hash():
+    _hash1 = PasswordHash("password")
+    _hash2 = _hash1
+    assert _hash1 == _hash2
+
+    _hash3 = PasswordHash("not password")
+    assert _hash1 != _hash3
 
 
 @fixture

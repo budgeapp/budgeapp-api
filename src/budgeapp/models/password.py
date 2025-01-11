@@ -1,4 +1,4 @@
-from typing import Annotated
+from typing import Annotated, Self
 
 from argon2 import PasswordHasher, extract_parameters
 from argon2.exceptions import InvalidHashError, VerifyMismatchError
@@ -18,11 +18,14 @@ class PasswordHash(SecretStr):
 
         super().__init__(value)
 
-    def __eq__(self, candidate: str):
-        try:
-            return _hasher.verify(self._secret_value, candidate)
-        except VerifyMismatchError:
-            return False
+    def __eq__(self, candidate: str | Self):
+        if isinstance(candidate, str):
+            try:
+                return _hasher.verify(self._secret_value, candidate)
+            except VerifyMismatchError:
+                return False
+
+        return super().__eq__(candidate)
 
 
 class Password(TypeDecorator):
