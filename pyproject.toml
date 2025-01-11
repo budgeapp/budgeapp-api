@@ -34,4 +34,5 @@ test = [
 
 [tool.pytest.ini_options]
 addopts = "-n 4"
+asyncio_default_fixture_loop_scope = "function"
 asyncio_mode = "auto"
