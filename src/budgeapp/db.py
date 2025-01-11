@@ -7,11 +7,12 @@ from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_asyn
 from budgeapp.env import DATABASE_URL
 
 engine = create_async_engine(DATABASE_URL, echo=True)
-_factory = async_sessionmaker(engine, expire_on_commit=False)
+async_factory = async_sessionmaker(engine, expire_on_commit=False)
 
 
 async def _async_session():
-    yield _factory()
+    async with async_factory() as session:
+        yield session
 
 
 async_session = asynccontextmanager(_async_session)

@@ -1,29 +1,31 @@
-from contextlib import asynccontextmanager
-
 from faker import Faker
 from pytest import fixture
 
-from budgeapp.db import async_session
+from budgeapp.db import async_factory, engine
 from budgeapp.models.password import PasswordHash
 from budgeapp.models.user import User
 
 
 @fixture
-def faker() -> Faker:
+async def faker():
     return Faker()
 
 
 @fixture
-async def user_factory(faker):
-    async def _user_factory(password: str = faker.password()):
-        user = User(email=faker.email(), password_hash=PasswordHash(password))
+async def db():
+    async with async_factory() as db:
+        yield db
+    await engine.dispose()
 
-        async with async_session() as db:
-            db.add(user)
-            await db.commit()
 
-            yield user
+@fixture
+async def user_factory(faker, db):
+    password = faker.password()
+    user = User(email=faker.email(), password_hash=PasswordHash(password))
 
-            await db.delete(user)
+    db.add(user)
+    await db.commit()
 
-    return asynccontextmanager(_user_factory)
+    yield user, password
+
+    await db.delete(user)

@@ -3,20 +3,16 @@ from fastapi.security import OAuth2PasswordRequestForm
 from pydantic import SecretStr
 from pytest import fixture, raises
 
-from budgeapp.db import async_session
 from budgeapp.models.password import PasswordHash
 from budgeapp.models.user import User, UserCreate
 
 
 @pytest.mark.asyncio
-async def test_user_authenticate(faker, user_factory):
-    password = faker.password()
+async def test_user_authenticate(user_factory):
+    user, password = user_factory
+    auth = OAuth2PasswordRequestForm(username=user.email, password=password)
 
-    async with user_factory(password) as user:
-        auth = OAuth2PasswordRequestForm(username=user.email, password=password)
-
-        async with async_session() as db:
-            assert await User.authenticate(auth, db) == user
+    assert (await User.authenticate(auth)) == user
 
 
 @fixture
