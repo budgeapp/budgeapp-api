@@ -6,6 +6,7 @@ import jwt
 from pydantic import BaseModel, Field
 
 from budgeapp import env
+from budgeapp.models.user import User
 
 
 def _expiry_time():
@@ -38,3 +39,7 @@ class Token(BaseModel):
         )
 
         return cls(claims=claims)
+
+    @classmethod
+    def for_user(cls, user: User):
+        return cls(claims=TokenClaims(sub=user.id))
