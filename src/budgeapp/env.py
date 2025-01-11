@@ -1,11 +1,11 @@
 from os import environ
 
-try:
+try:  # pragma: no cover
     from dotenv import load_dotenv
 
     load_dotenv()
     load_dotenv(".env.example")
-except ImportError:
+except ImportError:  # pragma: no cover
     pass
 
 DATABASE_URL = environ["DATABASE_URL"]
