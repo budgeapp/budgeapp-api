@@ -1,3 +1,4 @@
+from contextlib import asynccontextmanager
 from typing import Annotated
 
 from fastapi import Depends
@@ -7,12 +8,12 @@ from budgeapp.env import DATABASE_URL
 
 engine = create_async_engine(DATABASE_URL, echo=True)
 _factory = async_sessionmaker(engine, expire_on_commit=False)
-session = _factory()
+_async_session = _factory()
 
 
+@asynccontextmanager
 async def async_session():  # pragma: no cover
-    async with session.begin():
-        yield session
+    yield _async_session
 
 
-AsyncDbSession = Annotated[AsyncSession, Depends(async_session)]
+AsyncSessionDep = Annotated[AsyncSession, Depends(lambda: _async_session)]
