@@ -10,7 +10,7 @@ from budgeapp.models import Token, User
 router = APIRouter(prefix="/auth", tags=["auth"])
 
 
-@router.post(path="password")
+@router.post(path="/password")
 async def password_auth(
     auth: Annotated[OAuth2PasswordRequestForm, Depends()],
     db: AsyncSessionDep,
