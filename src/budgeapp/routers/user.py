@@ -11,7 +11,7 @@ from budgeapp.models.user import UserCreate
 router = APIRouter(prefix="/user", tags=["user"])
 
 
-@router.post("")
+@router.post("", status_code=HTTPStatus.CREATED)
 async def create_user(user_create: UserCreate, db: AsyncSessionDep) -> User:
     try:
         user = User.model_validate(user_create)
