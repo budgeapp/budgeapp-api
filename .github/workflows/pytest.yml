@@ -34,7 +34,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - uses: astral-sh/setup-uv@94a861f4b552101a9c3ae3f66aa902ee81d3ca8e
+      - uses: astral-sh/setup-uv@7174288630138f7c0d9faecae81add31729e2416
         with:
           enable-cache: true
       - uses: actions/setup-python@v5
