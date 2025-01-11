@@ -1,7 +1,7 @@
 from faker import Faker
 from pytest import fixture
 
-from budgeapp.db import async_factory, engine
+from budgeapp.db import async_engine, async_session
 from budgeapp.models.password import PasswordHash
 from budgeapp.models.user import User
 
@@ -13,9 +13,9 @@ async def faker():
 
 @fixture
 async def db():
-    async with async_factory() as db:
+    async with async_session() as db:
         yield db
-    await engine.dispose()
+    await async_engine.dispose()
 
 
 @fixture
