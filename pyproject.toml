@@ -6,7 +6,7 @@ readme = "README.md"
 authors = [{ name = "Jesse Brooklyn Hannah", email = "jesse@jbhannah.net" }]
 requires-python = "==3.13.1"
 dependencies = [
-    "alembic==1.14.1",
+    "alembic==1.15.2",
     "argon2-cffi==23.1.0",
     "email-validator==2.2.0",
     "fastapi[standard]==0.115.6",
