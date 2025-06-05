@@ -7,7 +7,8 @@
   "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
   "features": {
     "ghcr.io/devcontainers/features/node": {},
-    "ghcr.io/jsburckhardt/devcontainer-features/uv": {}
+    "ghcr.io/jsburckhardt/devcontainer-features/uv": {},
+    "ghcr.io/devcontainers/features/docker-outside-of-docker": {}
   },
 
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
@@ -18,10 +19,7 @@
   "postCreateCommand": "uv sync --all-groups",
   "customizations": {
     "vscode": {
-      "extensions": [
-        "charliermarsh.ruff",
-        "github.vscode-github-actions"
-      ]
+      "extensions": ["charliermarsh.ruff", "github.vscode-github-actions"]
     }
   },
 
