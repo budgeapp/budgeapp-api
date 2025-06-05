@@ -20,9 +20,7 @@
     "vscode": {
       "extensions": [
         "charliermarsh.ruff",
-        "github.vscode-github-actions",
-        "mtxr.sqltools",
-        "mtxr.sqltools-driver-pg"
+        "github.vscode-github-actions"
       ]
     }
   },

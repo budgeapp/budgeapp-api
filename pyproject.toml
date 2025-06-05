@@ -4,7 +4,7 @@ version = "0.1.0"
 description = "Backend API for Budge, a personal finance budgeting and forecasting app."
 readme = "README.md"
 authors = [{ name = "Jesse Brooklyn Hannah", email = "jesse@jbhannah.net" }]
-requires-python = "==3.13.3"
+requires-python = "~=3.13.3"
 dependencies = [
     "alembic==1.14.1",
     "argon2-cffi==23.1.0",
