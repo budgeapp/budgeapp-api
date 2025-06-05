@@ -22,6 +22,12 @@ class TokenClaims(BaseModel):
     exp: datetime = Field(default_factory=_expiry_time)
     sub: uuid.UUID
 
+    def into_jwt(self):
+        return {
+            "jti": str(self.jti),
+            "exp": int(self.exp.timestamp()),
+            "sub": str(self.sub),
+        }
 
 class Token(BaseModel):
     claims: TokenClaims
@@ -29,7 +35,7 @@ class Token(BaseModel):
 
     def __str__(self):
         return jwt.encode(
-            dict(self.claims), env.JWT_SECRET, algorithm=env.JWT_ALGORITHM
+            self.claims.into_jwt(), env.JWT_SECRET, algorithm=env.JWT_ALGORITHM
         )
 
     @classmethod
