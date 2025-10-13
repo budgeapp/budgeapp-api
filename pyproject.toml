@@ -12,7 +12,7 @@ dependencies = [
     "fastapi[standard]==0.115.6",
     "pyjwt[crypto]==2.10.1",
     "sqlalchemy[postgresql-asyncpg]==2.0.37",
-    "sqlmodel==0.0.22",
+    "sqlmodel==0.0.27",
 ]
 
 [project.scripts]
