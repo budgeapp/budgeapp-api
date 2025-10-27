@@ -9,7 +9,7 @@ dependencies = [
     "alembic==1.14.1",
     "argon2-cffi==23.1.0",
     "email-validator==2.2.0",
-    "fastapi[standard]==0.115.6",
+    "fastapi[standard]==0.120.0",
     "pyjwt[crypto]==2.10.1",
     "sqlalchemy[postgresql-asyncpg]==2.0.37",
     "sqlmodel==0.0.22",
